@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diego José García Saldaña - Portafolio Profesional</title>
     <style>
         :root {
+            /* Modo Claro (Default) */
             --primary: #1A365D;
             --secondary: #2B6CB0;
             --accent: #25D366;
@@ -14,6 +15,22 @@
             --text: #2D3748;
             --subtext: #4A5568;
             --border: #E2E8F0;
+            --tag-bg: #EBF4FF;
+            --card-hover: rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="dark"] {
+            /* Modo Oscuro */
+            --primary: #63B3ED;
+            --secondary: #4299E1;
+            --accent: #38A169;
+            --bg: #1A202C;
+            --card-bg: #2D3748;
+            --text: #F7FAFC;
+            --subtext: #CBD5E0;
+            --border: #4A5568;
+            --tag-bg: #2C5282;
+            --card-hover: rgba(255, 255, 255, 0.08);
         }
 
         body {
@@ -24,6 +41,7 @@
             padding: 20px;
             display: flex;
             justify-content: center;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
@@ -32,7 +50,8 @@
             background: var(--card-bg);
             padding: 40px;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
         }
 
         header {
@@ -40,11 +59,32 @@
             border-bottom: 3px solid var(--primary);
             padding-bottom: 25px;
             margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* Botón Modo Oscuro / Claro */
+        .theme-toggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
         }
 
         h1 {
             color: var(--primary);
-            margin: 0 0 10px 0;
+            margin: 10px 0;
             font-size: 2.2rem;
         }
 
@@ -58,7 +98,7 @@
         .contact-buttons {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
             margin-top: 15px;
         }
@@ -67,24 +107,26 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: transform 0.2s, background 0.2s;
-            color: white;
+            font-size: 0.88rem;
+            transition: transform 0.2s, opacity 0.2s;
+            color: white !important;
         }
 
         .btn-action:hover {
             transform: translateY(-2px);
+            opacity: 0.9;
         }
 
         .btn-wsp { background-color: #25D366; }
         .btn-email { background-color: #DD4B39; }
         .btn-linkedin { background-color: #0A66C2; }
+        .btn-github { background-color: #24292E; }
         .btn-devpost { background-color: #003E54; }
-        .btn-download-all { background-color: var(--primary); font-size: 1rem; padding: 12px 24px; }
+        .btn-download-all { background-color: #2B6CB0; font-size: 1rem; padding: 12px 24px; }
 
         section {
             margin-bottom: 35px;
@@ -129,8 +171,8 @@
 
         .tag {
             display: inline-block;
-            background: #EBF4FF;
-            color: var(--secondary);
+            background: var(--tag-bg);
+            color: var(--text);
             padding: 4px 10px;
             border-radius: 6px;
             font-size: 0.85rem;
@@ -145,7 +187,7 @@
         }
 
         .project-card, .cert-card {
-            background: #F8FAFC;
+            background: var(--bg);
             border: 1px solid var(--border);
             padding: 18px;
             border-radius: 10px;
@@ -157,7 +199,7 @@
 
         .project-card:hover, .cert-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 15px var(--card-hover);
         }
 
         .project-title, .cert-title {
@@ -192,10 +234,12 @@
             text-decoration: none;
             display: inline-block;
             text-align: center;
+            transition: background 0.2s;
         }
 
         .btn-view:hover { background: var(--primary); }
 
+        /* Modal / Pop-up de PDF */
         .modal {
             display: none;
             position: fixed;
@@ -207,7 +251,7 @@
         }
 
         .modal-content {
-            background: white;
+            background: var(--card-bg);
             width: 90%;
             max-width: 850px;
             height: 85vh;
@@ -219,7 +263,7 @@
 
         .modal-header {
             padding: 12px 20px;
-            background: var(--primary);
+            background: #1A365D;
             color: white;
             display: flex;
             justify-content: space-between;
@@ -258,6 +302,7 @@
         @media (max-width: 600px) {
             .container { padding: 20px; }
             h1 { font-size: 1.7rem; }
+            .theme-toggle { position: static; margin-bottom: 10px; }
         }
     </style>
 </head>
@@ -265,28 +310,32 @@
 
     <div class="container">
         <header>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 Modo Oscuro</button>
             <h1>Diego José García Saldaña</h1>
             <div class="subtitle">Profesional Técnico en Computación e Informática | Estudiante de Ingeniería de Sistemas</div>
             
             <div class="contact-buttons">
                 <a href="https://wa.me/51926078538?text=Hola%20Diego,%20vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte." target="_blank" class="btn-action btn-wsp">
-                    💬 WhatsApp Directo
+                    💬 WhatsApp
                 </a>
                 <a href="mailto:diegojgsald@gmail.com?subject=Contacto%20desde%20Portafolio%20Web" class="btn-action btn-email">
-                    ✉️ Enviar Correo
+                    ✉️ Correo
                 </a>
                 <a href="https://linkedin.com/in/diegogarciasaldaña" target="_blank" class="btn-action btn-linkedin">
                     🔗 LinkedIn
                 </a>
+                <a href="https://github.com/DIEGOJGS" target="_blank" class="btn-action btn-github">
+                    🐙 GitHub Profile
+                </a>
                 <a href="https://devpost.com/DIEGOJGS" target="_blank" class="btn-action btn-devpost">
-                    🚀 Devpost Profile
+                    🚀 Devpost
                 </a>
             </div>
         </header>
 
         <section>
             <h2>Perfil Profesional</h2>
-            <p>Profesional Técnico a Nombre de la Nación en Computación e Informática y estudiante de Ingeniería de Sistemas Computacionales con más de 5 años de experiencia práctica en soporte técnico, gestión de incidencias e infraestructura de TI. Me caracterizo por un aprendizaje dinámico y highly práctico (<em>learning by doing</em>), adaptándome con agilidad a nuevos procesos, herramientas y metodologías de trabajo. Cuento con experiencia en desarrollo de proyectos Full-Stack para hackathons y formación continua en análisis de datos, desarrollo Back-End y bases de datos.</p>
+            <p>Profesional Técnico a Nombre de la Nación en Computación e Informática y estudiante de Ingeniería de Sistemas Computacionales con más de 5 años de experiencia práctica en soporte técnico, gestión de incidencias e infraestructura de TI. Me caracterizo por un aprendizaje dinámico y altamente práctico (<em>learning by doing</em>), adaptándome con agilidad a nuevos procesos, herramientas y metodologías de trabajo. Cuento con experiencia en desarrollo de proyectos Full-Stack para hackathons y formación continua en análisis de datos, desarrollo Back-End y bases de datos.</p>
         </section>
 
         <section>
@@ -448,6 +497,7 @@
         </div>
     </div>
 
+    <!-- Modal para PDFs -->
     <div id="pdfModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -464,6 +514,28 @@
     </div>
 
     <script>
+        // Lógica Modo Oscuro / Claro
+        function toggleTheme() {
+            const html = document.documentElement;
+            const btn = document.getElementById('themeBtn');
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                btn.innerHTML = '🌙 Modo Oscuro';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                btn.innerHTML = '☀️ Modo Claro';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Cargar tema guardado si existe
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.getElementById('themeBtn').innerHTML = '☀️ Modo Claro';
+        }
+
+        // Lógica Modal PDF
         function openModal(pdfUrl, title) {
             document.getElementById('pdfFrame').src = pdfUrl;
             document.getElementById('modalTitle').innerText = title;
