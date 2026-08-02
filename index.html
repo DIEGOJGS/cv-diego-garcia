@@ -8,7 +8,7 @@
         :root {
             --primary: #1A365D;
             --secondary: #2B6CB0;
-            --accent: #319795;
+            --accent: #25D366; /* WhatsApp Green */
             --bg: #F0F4F8;
             --card-bg: #FFFFFF;
             --text: #2D3748;
@@ -55,21 +55,35 @@
             margin-bottom: 15px;
         }
 
-        .contact-info {
-            color: var(--subtext);
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 15px;
         }
 
-        .contact-info a {
-            color: var(--secondary);
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s, background 0.2s;
+            color: white;
         }
 
-        .contact-info a:hover {
-            text-decoration: underline;
+        .btn-action:hover {
+            transform: translateY(-2px);
         }
+
+        .btn-wsp { background-color: #25D366; }
+        .btn-email { background-color: #DD4B39; }
+        .btn-linkedin { background-color: #0A66C2; }
+        .btn-download-all { background-color: var(--primary); font-size: 1rem; padding: 12px 24px; }
 
         section {
             margin-bottom: 35px;
@@ -89,9 +103,7 @@
             font-size: 0.98rem;
         }
 
-        ul {
-            padding-left: 20px;
-        }
+        ul { padding-left: 20px; }
 
         .job, .edu-item {
             margin-bottom: 25px;
@@ -99,9 +111,7 @@
             border-bottom: 1px dashed var(--border);
         }
 
-        .job:last-child, .edu-item:last-child {
-            border-bottom: none;
-        }
+        .job:last-child, .edu-item:last-child { border-bottom: none; }
 
         .title {
             font-weight: bold;
@@ -159,29 +169,82 @@
             margin-bottom: 10px;
         }
 
-        .btn-link {
-            display: inline-block;
+        .btn-view {
             background: var(--secondary);
             color: white;
+            border: none;
             padding: 6px 12px;
             border-radius: 5px;
-            text-decoration: none;
+            cursor: pointer;
             font-size: 0.85rem;
             font-weight: 600;
-            transition: background 0.2s;
         }
 
-        .btn-link:hover {
+        .btn-view:hover { background: var(--primary); }
+
+        /* Estilos del Modal (Vista previa PDF) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 850px;
+            height: 85vh;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            padding: 12px 20px;
             background: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            flex: 1;
+            background: #525659;
+        }
+
+        .modal-body iframe {
+            width: 100%; height: 100%; border: none;
+        }
+
+        .btn-close, .btn-download-single {
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-download-single { background: #319795; margin-right: 10px; }
+        .btn-close { background: #E53E3E; border: none; }
+
+        .download-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
         }
 
         @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-            h1 {
-                font-size: 1.7rem;
-            }
+            .container { padding: 20px; }
+            h1 { font-size: 1.7rem; }
         }
     </style>
 </head>
@@ -191,9 +254,18 @@
         <header>
             <h1>Diego José García Saldaña</h1>
             <div class="subtitle">Profesional Técnico en Computación e Informática | Estudiante de Ingeniería de Sistemas</div>
-            <div class="contact-info">
-                📍 Trujillo, La Libertad, Perú | 📱 +51 926078538 | ✉️ <a href="mailto:diegojgsald@gmail.com">diegojgsald@gmail.com</a><br>
-                🔗 <a href="https://linkedin.com/in/diegogarciasaldaña" target="_blank">LinkedIn Profile</a>
+            
+            <!-- Botones Interactivos de Contacto -->
+            <div class="contact-buttons">
+                <a href="https://wa.me/51926078538?text=Hola%20Diego,%20vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte." target="_blank" class="btn-action btn-wsp">
+                    💬 WhatsApp Directo
+                </a>
+                <a href="mailto:diegojgsald@gmail.com?subject=Contacto%20desde%20Portafolio%20Web" class="btn-action btn-email">
+                    ✉️ Enviar Correo
+                </a>
+                <a href="https://linkedin.com/in/diegogarciasaldaña" target="_blank" class="btn-action btn-linkedin">
+                    🔗 LinkedIn
+                </a>
             </div>
         </header>
 
@@ -262,7 +334,7 @@
             <div class="edu-item">
                 <div class="title">Profesional Técnico en Computación e Informática (Titulado a Nombre de la Nación)</div>
                 <div class="meta">Instituto Superior Tecnológico Cibertec | Emitido el 24 de marzo de 2023</div>
-                <a href="titulo-cibertec.pdf" target="_blank" class="btn-link" style="margin-top: 8px;">Ver Título Profesional Oficial</a>
+                <button class="btn-view" onclick="openModal('titulo-cibertec.pdf', 'Título Profesional Oficial')">👁️ Ver Título Oficial</button>
             </div>
         </section>
 
@@ -273,42 +345,91 @@
                 <div class="cert-card">
                     <div class="cert-title">Especialización Back-End (Java & Spring Boot 3)</div>
                     <div class="cert-org">Alura Latam / Oracle ONE (2024)</div>
-                    <a href="https://app.aluracursos.com/user/diegojgsald/fullCertificate/8d88be8231745f6de876d9eafc42b529" target="_blank" class="btn-link">Ver Credencial Oficial</a>
+                    <a href="https://app.aluracursos.com/user/diegojgsald/fullCertificate/8d88be8231745f6de876d9eafc42b529" target="_blank" class="btn-action btn-linkedin" style="font-size:0.8rem; padding: 6px 10px;">Ver Credencial Oficial</a>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-title">KPI's Logísticos con Power BI</div>
                     <div class="cert-org">WE Educación Ejecutiva (Feb 2025)</div>
-                    <a href="cert-kpi-powerbi.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
+                    <button class="btn-view" onclick="openModal('cert-kpi-powerbi.pdf', 'Certificado KPI Logísticos')">👁️ Ver Documento</button>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-title">Power BI Avanzado</div>
                     <div class="cert-org">WE Educación Ejecutiva (Ene 2025)</div>
-                    <a href="cert-powerbi-avanzado.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
+                    <button class="btn-view" onclick="openModal('cert-powerbi-avanzado.pdf', 'Certificado Power BI Avanzado')">👁️ Ver Documento</button>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-title">SCRUM: Proyectos Ágiles</div>
                     <div class="cert-org">WE Educación Ejecutiva (Jun 2024)</div>
-                    <a href="cert-scrum.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
+                    <button class="btn-view" onclick="openModal('cert-scrum.pdf', 'Certificado SCRUM')">👁️ Ver Documento</button>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-title">Microsoft Power BI</div>
                     <div class="cert-org">WE Educación Ejecutiva (Mar 2024)</div>
-                    <a href="cert-powerbi.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
+                    <button class="btn-view" onclick="openModal('cert-powerbi.pdf', 'Certificado Power BI')">👁️ Ver Documento</button>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-title">Data Science</div>
                     <div class="cert-org">WE Educación Ejecutiva (Feb 2024)</div>
-                    <a href="cert-datascience.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
+                    <button class="btn-view" onclick="openModal('cert-datascience.pdf', 'Certificado Data Science')">👁️ Ver Documento</button>
                 </div>
 
             </div>
         </section>
+
+        <!-- Descarga Global del Expediente -->
+        <div class="download-footer">
+            <h3>¿Quieres guardar toda mi información profesional?</h3>
+            <p>Descarga mi Currículum Vitae en formato PDF listo para guardar o imprimir.</p>
+            <a href="CV_DiegoGarcia_2026.pdf" download class="btn-action btn-download-all">
+                📥 Descargar CV Completo (PDF)
+            </a>
+        </div>
     </div>
+
+    <!-- Modal de Previsualización de Documentos -->
+    <div id="pdfModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="modalTitle">Vista Previa del Documento</span>
+                <div>
+                    <a id="downloadBtn" href="#" download class="btn-download-single">📥 Descargar Este PDF</a>
+                    <button class="btn-close" onclick="closeModal()">✖ Cerrar</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <iframe id="pdfFrame" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(pdfUrl, title) {
+            document.getElementById('pdfFrame').src = pdfUrl;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('downloadBtn').href = pdfUrl;
+            document.getElementById('pdfModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('pdfModal').style.display = 'none';
+            document.getElementById('pdfFrame').src = '';
+        }
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.onclick = function(event) {
+            var modal = document.getElementById('pdfModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
 
 </body>
 </html>
