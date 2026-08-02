@@ -1,260 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diego José García Saldaña - Portafolio Profesional</title>
-    <style>
-        :root {
-            --primary: #1A365D;
-            --secondary: #2B6CB0;
-            --accent: #319795;
-            --bg: #F0F4F8;
-            --card-bg: #FFFFFF;
-            --text: #2D3748;
-            --subtext: #4A5568;
-            --border: #E2E8F0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .container {
-            max-width: 900px;
-            width: 100%;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        }
-
-        header {
-            text-align: center;
-            border-bottom: 3px solid var(--primary);
-            padding-bottom: 25px;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            color: var(--primary);
-            margin: 0 0 10px 0;
-            font-size: 2.2rem;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .contact-info {
-            color: var(--subtext);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .contact-info a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        section {
-            margin-bottom: 35px;
-        }
-
-        h2 {
-            color: var(--primary);
-            font-size: 1.4rem;
-            border-left: 5px solid var(--secondary);
-            padding-left: 12px;
-            margin-bottom: 20px;
-        }
-
-        p, li {
-            line-height: 1.6;
-            color: var(--text);
-            font-size: 0.98rem;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        .job, .edu-item {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed var(--border);
-        }
-
-        .job:last-child, .edu-item:last-child {
-            border-bottom: none;
-        }
-
-        .title {
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 1.05rem;
-        }
-
-        .meta {
-            font-style: italic;
-            color: var(--subtext);
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-        }
-
-        .tag {
-            display: inline-block;
-            background: #EBF4FF;
-            color: var(--secondary);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin: 3px;
-        }
-
-        /* Grid para Certificados */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 15px;
-        }
-
-        .cert-card {
-            background: #F8FAFC;
-            border: 1px solid var(--border);
-            padding: 15px;
-            border-radius: 10px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .cert-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-        }
-
-        .cert-title {
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 0.95rem;
-            margin-bottom: 5px;
-        }
-
-        .cert-org {
-            font-size: 0.85rem;
-            color: var(--subtext);
-            margin-bottom: 10px;
-        }
-
-        .btn-link {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-
-        .btn-link:hover {
-            background: var(--primary);
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-            h1 {
-                font-size: 1.7rem;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <header>
-            <h1>Diego José García Saldaña</h1>
-            <div class="subtitle">Profesional Técnico en Computación e Informática | Estudiante de Ingeniería de Sistemas</div>
-            <div class="contact-info">
-                📍 Trujillo, La Libertad, Perú | 📱 +51 926078538 | ✉️ <a href="mailto:diegojgsald@gmail.com">diegojgsald@gmail.com</a><br>
-                🔗 <a href="https://linkedin.com/in/diegogarciasaldaña" target="_blank">LinkedIn Profile</a>
-            </div>
-        </header>
-
-        <section>
-            <h2>Perfil Profesional</h2>
-            <p>Profesional Técnico a Nombre de la Nación en Computación e Informática y estudiante de Ingeniería de Sistemas Computacionales con más de 5 años de experiencia práctica en soporte técnico, gestión de incidencias e infraestructura de TI. Me caracterizo por un aprendizaje dinámico y altamente práctico (<em>learning by doing</em>), adaptándome con agilidad a nuevos procesos, herramientas y metodologías de trabajo. Cuento con formación continua y sólidos conocimientos conceptuales en análisis de datos, desarrollo Back-End y bases de datos, con gran motivación por aportar valor en proyectos tecnológicos.</p>
-        </section>
-
-        <section>
-            <h2>Competencias & Habilidades Técnicas</h2>
-            <div>
-                <span class="tag">Soporte Técnico & TI</span>
-                <span class="tag">ERP Banner</span>
-                <span class="tag">Sistemas CRM / Zendesk</span>
-                <span class="tag">Gestión de Tickets</span>
-                <span class="tag">Power BI Avanzado</span>
-                <span class="tag">Excel Intermedio/Avanzado</span>
-                <span class="tag">Java (Spring Boot)</span>
-                <span class="tag">SQL / MySQL</span>
-                <span class="tag">Python</span>
-                <span class="tag">Git & GitHub</span>
-                <span class="tag">Scrum / Metodologías Ágiles</span>
-            </div>
-        </section>
-
-        <section>
-            <h2>Experiencia Laboral</h2>
-            
-            <div class="job">
-                <div class="title">Auxiliar de Uso de Aulas y Laboratorios / Soporte Operativo</div>
-                <div class="meta">Universidad Privada Antenor Orrego (UPAO) | Octubre 2022 – Presente | Trujillo, Perú</div>
-                <ul>
-                    <li>Atención directa e inmediata a docentes y personal administrativo, resolviendo eventualidades técnicas y operativas en aulas y laboratorios.</li>
-                    <li>Uso diario del sistema ERP Banner para la coordinación de clases, programación de aulas y apoyo logístico.</li>
-                    <li>Registro de incidencias operativas y elaboración de reportes de estado para la jefatura directa.</li>
-                    <li>Control y resguardo de equipos informáticos, multimedia y accesorios bajo protocolos institucionales.</li>
-                </ul>
-            </div>
-
-            <div class="job">
-                <div class="title">Especialista en Soporte al Cliente (Live Order)</div>
-                <div class="meta">UBYCALL (Campaña PedidosYa) | Noviembre 2024 – Marzo 2025 | Remoto</div>
-                <ul>
-                    <li>Gestión activa de incidencias en tiempo real vía chat y voz, atendiendo hasta 3 interacciones en simultáneo.</li>
-                    <li>Coordinación ágil entre clientes, comercios y repartidores para la resolución práctica de inconvenientes.</li>
-                    <li>Atención orientada a soluciones rápidas y empáticas, manteniendo un destacado indicador de satisfacción (CSAT).</li>
-                </ul>
-            </div>
-
-            <div class="job">
-                <div class="title">Asistente de Aulas, Laboratorios y Talleres</div>
-                <div class="meta">Instituto Cibertec S.A.C. | Octubre 2021 – Octubre 2022 | Trujillo, Perú</div>
-                <ul>
-                    <li>Instalación, clonación de discos (imágenes Master) y configuración de programas en laboratorios.</li>
-                    <li>Atención y registro de solicitudes docentes mediante el sistema académico institucional.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
+<section>
             <h2>Educación & Grados Oficiales</h2>
             <div class="edu-item">
                 <div class="title">Ingeniería de Sistemas Computacionales (En curso)</div>
@@ -263,6 +7,7 @@
             <div class="edu-item">
                 <div class="title">Profesional Técnico en Computación e Informática (Titulado a Nombre de la Nación)</div>
                 <div class="meta">Instituto Superior Tecnológico Cibertec | Emitido el 24 de marzo de 2023[cite: 12]</div>
+                <a href="titulo-cibertec.pdf" target="_blank" class="btn-link" style="margin-top: 8px;">Ver Título Profesional Oficial</a>
             </div>
         </section>
 
@@ -279,36 +24,32 @@
                 <div class="cert-card">
                     <div class="cert-title">KPI's Logísticos con Power BI</div>
                     <div class="cert-org">WE Educación Ejecutiva (Feb 2025)[cite: 6]</div>
-                    <a href="CERTIFICADO-KPI'S LOGÍSTICOS CON POWER BI.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
+                    <a href="cert-kpi-powerbi.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-title">Power BI Avanzado</div>
                     <div class="cert-org">WE Educación Ejecutiva (Ene 2025)[cite: 10]</div>
-                    <a href="CERTIFICADO-POWER BI AVANZADO.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
+                    <a href="cert-powerbi-avanzado.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-title">SCRUM: Proyectos Ágiles</div>
                     <div class="cert-org">WE Educación Ejecutiva (Jun 2024)[cite: 9]</div>
-                    <a href="CERTIFICADO-SCRUM_ PROYECTOS ÁGILES.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
+                    <a href="cert-scrum.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-title">Microsoft Power BI</div>
                     <div class="cert-org">WE Educación Ejecutiva (Mar 2024)[cite: 8]</div>
-                    <a href="CERTIFICADO-POWER BI.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
+                    <a href="cert-powerbi.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-title">Data Science</div>
                     <div class="cert-org">WE Educación Ejecutiva (Feb 2024)[cite: 7]</div>
-                    <a href="CERTIFICADO-DATA SCIENCE.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
+                    <a href="cert-datascience.pdf" target="_blank" class="btn-link">Ver Certificado PDF</a>
                 </div>
 
             </div>
         </section>
-    </div>
-
-</body>
-</html>
